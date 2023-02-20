@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit {
       // var temp: new Employee(this.EmployeeName[index],this.EmployeeDateIn[index]);
       this.EmployeeIsActive.push("true");
     }
+
+    this.defaultFilter();
   }
 
   onKey(event: any) {
@@ -69,14 +71,21 @@ export class DashboardComponent implements OnInit {
   }
 
   public searchEmployee() {
-    const index: number = this.EmployeeName.indexOf(this.inputEmployee);
-    this.filterEmployeeName = [];
-    this.filterEmployeeDateIn = [];
-    this.filterEmployeeIsActive = [];
-    if (index !== -1){
-      this.filterEmployeeName.push(this.EmployeeName[index]);
-      this.filterEmployeeDateIn.push(this.EmployeeDateIn[index]);
-      this.filterEmployeeIsActive.push(this.EmployeeIsActive[index]);
+    if(this.inputEmployee == "")
+    {
+      this.defaultFilter();
+    }
+    else
+    {
+      const index: number = this.EmployeeName.indexOf(this.inputEmployee);
+      this.filterEmployeeName = [];
+      this.filterEmployeeDateIn = [];
+      this.filterEmployeeIsActive = [];
+      if (index !== -1){
+        this.filterEmployeeName.push(this.EmployeeName[index]);
+        this.filterEmployeeDateIn.push(this.EmployeeDateIn[index]);
+        this.filterEmployeeIsActive.push(this.EmployeeIsActive[index]);
+      }
     }
   }
 
