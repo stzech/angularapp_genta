@@ -1,6 +1,10 @@
 
-<h3>EmployeeList</h3>
-
+<h3>Employee List</h3>
+<div class="form-group col-md-5">
+    <label >Employee Search</label>
+    <input (keyup)="onKey($event)" asp-for="employeeSearch" class="form-control" type="tel" id="employeeSearch"/>
+    <button class="btn btn-primary" (click)="searchEmployee()">Search Employee</button>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -11,12 +15,12 @@
             <th>Action</th>
         </tr>
     </thead>
-    <tbody *ngFor="let item of EmployeeName; let i = index">
+    <tbody *ngFor="let item of filterEmployeeName; let i = index">
         <tr>
             <td>{{i}}</td>
             <td>{{item}}</td>
-            <td>{{EmployeeDateIn[i]}}</td>
-            <td>{{EmployeeIsActive[i]}}</td>
+            <td>{{filterEmployeeDateIn[i]}}</td>
+            <td>{{filterEmployeeIsActive[i]}}</td>
             <td><button (click)="deleteEmployee(item)" class="btn btn-primary">Delete</button></td>
         </tr>
     </tbody>

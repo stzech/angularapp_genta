@@ -14,6 +14,9 @@ export class DashboardComponent implements OnInit {
   EmployeeName: string[] = [];
   EmployeeDateIn: string[] = [];
   EmployeeIsActive: string[] = [];
+  filterEmployeeName: string[] = [];
+  filterEmployeeDateIn: string[] = [];
+  filterEmployeeIsActive: string[] = [];
   inputEmployee: string = "";
   // Employees: Employee[] = [];
 
@@ -50,7 +53,9 @@ export class DashboardComponent implements OnInit {
     this.jstoday = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
     this.EmployeeDateIn.push(this.jstoday);
 
-    this.EmployeeIsActive.push("true")
+    this.EmployeeIsActive.push("true");
+
+    this.defaultFilter();
   }
 
   public deleteEmployee(_name: string) {
@@ -59,6 +64,30 @@ export class DashboardComponent implements OnInit {
       this.EmployeeName.splice(index, 1);
       this.EmployeeDateIn.splice(index, 1);
       this.EmployeeIsActive.splice(index, 1);
+    }
+    this.defaultFilter();
+  }
+
+  public searchEmployee() {
+    const index: number = this.EmployeeName.indexOf(this.inputEmployee);
+    this.filterEmployeeName = [];
+    this.filterEmployeeDateIn = [];
+    this.filterEmployeeIsActive = [];
+    if (index !== -1){
+      this.filterEmployeeName.push(this.EmployeeName[index]);
+      this.filterEmployeeDateIn.push(this.EmployeeDateIn[index]);
+      this.filterEmployeeIsActive.push(this.EmployeeIsActive[index]);
+    }
+  }
+
+  public defaultFilter() {
+    this.filterEmployeeName = [];
+    this.filterEmployeeDateIn = [];
+    this.filterEmployeeIsActive = [];
+    for (let index = 0; index < this.EmployeeName.length; index++) {
+      this.filterEmployeeName.push(this.EmployeeName[index]);
+      this.filterEmployeeDateIn.push(this.EmployeeDateIn[index]);
+      this.filterEmployeeIsActive.push(this.EmployeeIsActive[index]);
     }
   }
 
