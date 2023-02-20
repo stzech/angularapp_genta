@@ -1,0 +1,30 @@
+
+<h3>EmployeeList</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Create</th>
+            <th>IsActive</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of EmployeeName; let i = index">
+        <tr>
+            <td>{{i}}</td>
+            <td>{{item}}</td>
+            <td>{{EmployeeDateIn[i]}}</td>
+            <td>{{EmployeeIsActive[i]}}</td>
+            <td><button (click)="deleteEmployee(item)" class="btn btn-primary">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+<hr />
+<h3>Add New Employee</h3><br />
+<div class="form-group col-md-5">
+    <label >Employee Name</label>
+    <input (keyup)="onKey($event)" asp-for="employeeName" class="form-control" type="tel" id="employeeName"/>
+    <button class="btn btn-primary" (click)="addEmployee()">Add Employee</button>
+</div>
